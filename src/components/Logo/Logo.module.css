@@ -1,0 +1,30 @@
+.root {
+  font-family: var(--zen-tokyo-zoo);
+  font-size: 56px;
+  line-height: 56px;
+  text-align: center;
+  text-shadow: var(--text-shadow-big);
+
+  color: var(--white);
+}
+
+@media only screen and (min-width: 576px) {
+  .root {
+    font-size: 76px;
+    line-height: 76px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    font-size: 96px;
+    line-height: 96px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .root {
+    font-size: 128px;
+    line-height: 128px;
+  }
+}

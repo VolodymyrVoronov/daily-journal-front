@@ -1,12 +1,12 @@
 html,
 body {
-  min-width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
 }
 
 body {
-  background-image: url('../assets/images/root-bg-01.jpg');
+  background: url('../assets/images/root-bg-01.jpg');
   background-size: cover;
 }
 
@@ -39,11 +39,16 @@ span {
   --blue: #228be6;
   --gold: #fdcb04;
 
+  --light-bg-color-op-80: rgba(255, 255, 255, 0.8);
+  --dark-bg-color-op-50: rgba(0, 0, 0, 0.5);
+
   --zen-tokyo-zoo: 'Zen Tokyo Zoo', sans-serif;
   --comfortaa: 'Comfortaa Variable', sans-serif;
 
   --box-shadow-small: 1px 1px 1px 0 rgba(0, 0, 0, 0.5);
   --box-shadow-medium: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
+
+  --text-shadow-big: 8px 8px 8px var(--black);
 
   --button-focus: 5px solid rgb(100, 231, 231);
 }
