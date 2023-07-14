@@ -8,6 +8,7 @@ import { useAuthStore } from '../../store/authStore';
 import { Form, RouterPath, type FormType, type IFormData } from '../../types';
 
 import Logo from '../../components/Logo/Logo';
+import Error from '../../components/Error/Error';
 
 import styles from './Start.module.css';
 
@@ -44,14 +45,16 @@ const Start = (): JSX.Element => {
   };
 
   useEffect(() => {
-    if (!isLoggedIn()) {
-      navigate(RouterPath.Start);
-    }
+    // if (!isLoggedIn()) {
+    //   navigate(RouterPath.Start);
+    // }
 
     if (isLoggedIn()) {
       navigate(RouterPath.Journal);
     }
   }, [aT, rT]);
+
+  const e = '';
 
   return (
     <>
@@ -73,6 +76,8 @@ const Start = (): JSX.Element => {
           <Logo>Daily Journal</Logo>
         </motion.section>
       </motion.div>
+
+      {e && <Error errorMessage={e} />}
     </>
   );
 };

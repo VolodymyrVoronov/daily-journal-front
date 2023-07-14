@@ -1,10 +1,12 @@
 .root {
   display: grid;
   grid-template-areas:
+    'right'
     'left'
-    'right';
+    'left'
+    'left';
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 
   height: 100vh;
   width: 100vw;
@@ -14,6 +16,7 @@
 
 .left {
   display: flex;
+  grid-area: left;
   flex-direction: column;
   align-items: center;
 
@@ -24,6 +27,7 @@
 
 .right {
   display: flex;
+  grid-area: right;
   justify-content: center;
   align-items: center;
 }
