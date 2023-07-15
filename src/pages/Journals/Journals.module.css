@@ -1,0 +1,155 @@
+.root {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    'left'
+    'right'
+    'right';
+  grid-template-columns: minmax(365px, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+
+  height: 100vh;
+  width: 100vw;
+
+  padding: 5px;
+}
+
+.root::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+
+  margin: 5px;
+
+  border-radius: 25px;
+  box-shadow: 0 0 5px var(--black);
+}
+
+.left {
+  display: flex;
+  grid-area: left;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 5px;
+
+  background-color: var(--light-bg-color-op-80);
+
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.right {
+  display: flex;
+  grid-area: right;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 5px;
+
+  background-color: var(--white);
+
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+@media only screen and (min-width: 576px) {
+  .root {
+    padding: 10px;
+  }
+
+  .root::before {
+    margin: 10px;
+
+    box-shadow: 0 0 10px var(--black);
+  }
+
+  .left {
+    padding: 10px;
+  }
+
+  .right {
+    padding: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .root {
+    grid-template-areas: 'left right';
+    grid-template-columns: 370px 1fr;
+    grid-template-rows: 1fr;
+
+    padding: 15px;
+  }
+
+  .root::before {
+    margin: 15px;
+
+    box-shadow: 0 0 15px var(--black);
+  }
+
+  .left {
+    padding: 15px;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
+
+  .right {
+    padding: 15px;
+
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .root {
+    padding: 20px;
+  }
+
+  .root::before {
+    margin: 20px;
+
+    box-shadow: 0 0 20px var(--black);
+  }
+
+  .left {
+    padding: 20px;
+  }
+
+  .right {
+    padding: 20px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .root {
+    padding: 25px;
+  }
+
+  .root::before {
+    margin: 25px;
+
+    box-shadow: 0 0 25px var(--black);
+  }
+
+  .left {
+    padding: 25px;
+  }
+
+  .right {
+    padding: 25px;
+  }
+}

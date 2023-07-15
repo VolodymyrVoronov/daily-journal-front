@@ -9,13 +9,14 @@ import { useUserStore } from '../../store/userStore';
 import { RouterPath } from '../../types';
 
 import Error from '../../components/Error/Error';
+import UserInfo from '../../components/UserInfo/UserInfo';
 
 import styles from './Journals.module.css';
 
 const Journals = (): JSX.Element => {
   const navigate = useNavigate();
 
-  const { isLoggedIn, logout, accessToken, refreshToken } = useAuthStore();
+  const { isLoggedIn, accessToken, refreshToken } = useAuthStore();
   const { saveUserInfo } = useUserStore();
 
   const [resError, setResError] = useState('');
@@ -49,10 +50,10 @@ const Journals = (): JSX.Element => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        Journals
-        <button type='button' onClick={logout}>
-          Logout
-        </button>
+        <section className={styles.left}>
+          <UserInfo />
+        </section>
+        <section className={styles.right}>Right</section>
       </motion.div>
 
       {resError && <Error errorMessage={resError} />}

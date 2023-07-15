@@ -1,0 +1,10 @@
+.root {
+  display: inline-block;
+
+  width: 100%;
+
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 34px;
+  text-align: left;
+}
