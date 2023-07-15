@@ -1,6 +1,6 @@
 export enum RouterPath {
   Start = '/',
-  Journal = '/journal',
+  Journals = '/journals',
 }
 
 export enum Key {

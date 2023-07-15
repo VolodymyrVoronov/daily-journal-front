@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { logIn, register } from '../../services/services';
@@ -23,10 +23,14 @@ const Start = (): JSX.Element => {
     refreshToken: rT,
   } = useAuthStore();
 
+  const [resError, setResError] = useState('');
+
   const onSubmitButtonClick = async (
     data: IFormData,
     type: FormType,
   ): Promise<void> => {
+    setResError('');
+
     try {
       const response =
         type === Form.Login ? await logIn(data) : await register(data);
@@ -36,26 +40,20 @@ const Start = (): JSX.Element => {
       login({ accessToken, refreshToken });
     } catch (error) {
       if (error instanceof AxiosError) {
-        console.log(error.response);
+        setResError(error.message);
       }
 
       if (error instanceof AxiosError && error.response) {
-        console.log(error.response);
+        setResError(error.response.data.message);
       }
     }
   };
 
   useEffect(() => {
-    // if (!isLoggedIn()) {
-    //   navigate(RouterPath.Start);
-    // }
-
     if (isLoggedIn()) {
-      navigate(RouterPath.Journal);
+      navigate(RouterPath.Journals);
     }
   }, [aT, rT]);
-
-  const e = '';
 
   return (
     <>
@@ -85,7 +83,7 @@ const Start = (): JSX.Element => {
         </motion.section>
       </motion.div>
 
-      {e && <Error errorMessage={e} />}
+      {resError && <Error errorMessage={resError} />}
     </>
   );
 };
