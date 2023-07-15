@@ -29,7 +29,7 @@ const Start = (): JSX.Element => {
   ): Promise<void> => {
     try {
       const response =
-        type === Form.Register ? await register(data) : await logIn(data);
+        type === Form.Login ? await logIn(data) : await register(data);
 
       const { accessToken, refreshToken } = response.data;
 

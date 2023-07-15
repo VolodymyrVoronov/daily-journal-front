@@ -18,7 +18,11 @@ const Button = forwardRef(
   ): JSX.Element => {
     if (buttonAs === 'text') {
       return (
-        <button className={cn(styles['root-text'], className)} {...props}>
+        <button
+          ref={ref}
+          className={cn(styles['root-text'], className)}
+          {...props}
+        >
           {children}
         </button>
       );
@@ -26,9 +30,9 @@ const Button = forwardRef(
 
     return (
       <button
+        ref={ref}
         className={cn(styles['root-button'], className)}
         {...props}
-        ref={ref}
       >
         {children}
       </button>
