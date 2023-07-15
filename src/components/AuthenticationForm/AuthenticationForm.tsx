@@ -64,6 +64,8 @@ const AuthenticationForm = ({
     setFocus('login');
   }, []);
 
+  const isFormValid = Object.keys(errors).length > 0;
+
   return (
     <div className={cn(styles.root, className)} {...props}>
       <AnimatePresence mode='wait'>
@@ -71,18 +73,20 @@ const AuthenticationForm = ({
           onSubmit={handleSubmit(onFormSubmit)}
           className={styles.form}
           key={String(isLoginForm)}
-          initial={{ opacity: 0, scale: 0.9, filter: 'blur(5px)' }}
+          initial={{ opacity: 0, y: -100, scale: 0.9, filter: 'blur(5px)' }}
           exit={{
-            scale: 0.9,
             opacity: 0,
+            y: 100,
+            scale: 0.9,
             filter: 'blur(2.5px)',
             transition: {
               duration: 0.5,
             },
           }}
           animate={{
-            scale: 1,
             opacity: 1,
+            y: 0,
+            scale: 1,
             filter: 'blur(0px)',
             transition: {
               duration: 0.5,
@@ -179,7 +183,7 @@ const AuthenticationForm = ({
             <Button
               type='submit'
               className={styles.button}
-              disabled={Object.keys(errors).length > 0}
+              disabled={isFormValid}
             >
               Login
             </Button>
@@ -187,7 +191,7 @@ const AuthenticationForm = ({
             <Button
               type='submit'
               className={styles.button}
-              disabled={Object.keys(errors).length > 0}
+              disabled={isFormValid}
             >
               Register
             </Button>
