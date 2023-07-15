@@ -1,0 +1,60 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+}
+
+.header {
+  display: inline-block;
+
+  font-size: 22px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.input {
+  margin-top: 20px;
+}
+
+@media only screen and (min-width: 576px) {
+  .header {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  .input {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    font-size: 38px;
+    line-height: 38px;
+  }
+
+  .input {
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .header {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .input {
+    margin-top: 50px;
+  }
+}

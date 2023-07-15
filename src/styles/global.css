@@ -23,7 +23,9 @@ h4,
 h5,
 h6,
 p,
-span {
+span,
+label,
+input {
   font-family: var(--comfortaa);
   color: var(--black-light);
 }
@@ -39,16 +41,15 @@ span {
   --blue: #228be6;
   --gold: #fdcb04;
 
+  --light-bg-color-op-50: rgba(255, 255, 255, 0.5);
   --light-bg-color-op-80: rgba(255, 255, 255, 0.8);
   --dark-bg-color-op-50: rgba(0, 0, 0, 0.5);
 
   --zen-tokyo-zoo: 'Zen Tokyo Zoo', sans-serif;
   --comfortaa: 'Comfortaa Variable', sans-serif;
 
-  --box-shadow-small: 1px 1px 1px 0 rgba(0, 0, 0, 0.5);
+  --box-shadow-small: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
   --box-shadow-medium: 4px 4px 4px 0 rgba(0, 0, 0, 0.5);
 
   --text-shadow-big: 8px 8px 8px var(--black);
-
-  --button-focus: 5px solid rgb(100, 231, 231);
 }

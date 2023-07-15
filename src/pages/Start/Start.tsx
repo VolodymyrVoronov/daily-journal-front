@@ -7,8 +7,9 @@ import { logIn, register } from '../../services/services';
 import { useAuthStore } from '../../store/authStore';
 import { Form, RouterPath, type FormType, type IFormData } from '../../types';
 
-import Logo from '../../components/Logo/Logo';
+import AuthenticationForm from '../../components/AuthenticationForm/AuthenticationForm';
 import Error from '../../components/Error/Error';
+import Logo from '../../components/Logo/Logo';
 
 import styles from './Start.module.css';
 
@@ -65,7 +66,14 @@ const Start = (): JSX.Element => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <section className={styles.left}>Left</section>
+        <motion.section
+          className={styles.left}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 1, delay: 1 } }}
+        >
+          <AuthenticationForm onSubmitButtonClick={onSubmitButtonClick} />
+        </motion.section>
 
         <motion.section
           className={styles.right}
