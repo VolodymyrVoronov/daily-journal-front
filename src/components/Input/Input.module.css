@@ -34,6 +34,12 @@
   border: none;
   border-radius: 25px;
   box-shadow: var(--box-shadow-small);
+
+  transition: 0.3s;
+}
+
+.input:not(:focus-visible):hover {
+  box-shadow: var(--box-shadow-medium);
 }
 
 .password {

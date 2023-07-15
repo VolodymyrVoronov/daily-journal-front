@@ -26,6 +26,43 @@
   margin-top: 20px;
 }
 
+.error {
+  margin-top: 5px;
+  padding: 0 10px;
+
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  max-inline-size: 50ch;
+
+  color: tomato;
+
+  background-color: var(--black-light);
+
+  border-radius: 50px;
+}
+
+.button {
+  margin-top: 35px;
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+.footer-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.footer-button {
+  margin-top: 10px;
+}
+
 @media only screen and (min-width: 576px) {
   .header {
     font-size: 32px;
@@ -34,6 +71,19 @@
 
   .input {
     margin-top: 30px;
+  }
+
+  .button {
+    margin-top: 45px;
+  }
+
+  .footer {
+    margin-top: 30px;
+  }
+
+  .footer-text {
+    font-size: 22px;
+    line-height: 22px;
   }
 }
 
@@ -46,6 +96,19 @@
   .input {
     margin-top: 40px;
   }
+
+  .button {
+    margin-top: 55px;
+  }
+
+  .footer {
+    margin-top: 40px;
+  }
+
+  .footer-text {
+    font-size: 24px;
+    line-height: 24px;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -56,5 +119,25 @@
 
   .input {
     margin-top: 50px;
+  }
+
+  .button {
+    margin-top: 75px;
+  }
+
+  .footer {
+    margin-top: 50px;
+  }
+
+  .footer-text {
+    flex-direction: row;
+
+    font-size: 26px;
+    line-height: 26px;
+  }
+
+  .footer-button {
+    margin-top: 0;
+    margin-left: 10px;
   }
 }

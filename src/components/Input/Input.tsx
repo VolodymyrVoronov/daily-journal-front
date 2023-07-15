@@ -63,6 +63,7 @@ const Input = forwardRef(
               initial={{ opacity: 0, scale: 0.9 }}
               exit={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.1 }}
             >
               <span className={styles.icon}>
                 {showPassword ? <BiHide /> : <BiShow />}
