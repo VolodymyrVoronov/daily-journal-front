@@ -16,9 +16,9 @@ import Error from '../../components/Error/Error';
 import UserInfo from '../../components/UserInfo/UserInfo';
 import TodayHeader from '../../components/TodayHeader/TodayHeader';
 
-import styles from './Journals.module.css';
+import styles from './Journal.module.css';
 
-const Journals = (): JSX.Element => {
+const Journal = (): JSX.Element => {
   const navigate = useNavigate();
 
   const { isLoggedIn, accessToken, refreshToken, logout } = useAuthStore();
@@ -110,4 +110,4 @@ const Journals = (): JSX.Element => {
   );
 };
 
-export default Journals;
+export default Journal;

@@ -51,7 +51,7 @@ const Start = (): JSX.Element => {
 
   useEffect(() => {
     if (isLoggedIn()) {
-      navigate(RouterPath.Journals);
+      navigate(RouterPath.Journal);
     }
   }, [aT, rT]);
 
