@@ -1,5 +1,10 @@
+import { DayValue } from '@hassanmojab/react-modern-calendar-datepicker';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
+
+const getCurrentFullYear = () => new Date().getFullYear();
+const getCurrentMonth = () => new Date().getMonth() + 1;
+const getCurrentDay = () => new Date().getDate();
 
 interface IJournalStore {
   year: number;
@@ -8,20 +13,29 @@ interface IJournalStore {
 }
 
 interface IJournalStoreActions {
-  setDate: (date: IJournalStore) => void;
+  setDate: (value: DayValue) => void;
+  setToday: () => void;
 }
 
-export const useAuthStore = create(
+export const useJournalStore = create(
   immer<IJournalStore & IJournalStoreActions>((set, get) => ({
-    year: new Date().getFullYear(),
-    month: new Date().getMonth() + 1,
-    day: new Date().getDate(),
+    year: getCurrentFullYear(),
+    month: getCurrentMonth(),
+    day: getCurrentDay(),
 
-    setDate: (date: IJournalStore) => {
+    setDate: (value: DayValue) => {
       set((state) => {
-        state.year = date.year;
-        state.month = date.month;
-        state.day = date.day;
+        state.year = value ? value.year : state.year;
+        state.month = value ? value.month : state.month;
+        state.day = value ? value.day : state.day;
+      });
+    },
+
+    setToday: () => {
+      set((state) => {
+        state.year = getCurrentFullYear();
+        state.month = getCurrentMonth();
+        state.day = getCurrentDay();
       });
     },
   })),

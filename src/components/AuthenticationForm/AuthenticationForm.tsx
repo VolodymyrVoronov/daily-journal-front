@@ -184,6 +184,7 @@ const AuthenticationForm = ({
               type='submit'
               className={styles.button}
               disabled={isFormValid}
+              aria-label='Login'
             >
               Login
             </Button>
@@ -192,6 +193,7 @@ const AuthenticationForm = ({
               type='submit'
               className={styles.button}
               disabled={isFormValid}
+              aria-label='Register'
             >
               Register
             </Button>
@@ -206,6 +208,7 @@ const AuthenticationForm = ({
                   type='button'
                   buttonAs='text'
                   onClick={onChangeFormTypeButtonClick}
+                  aria-label='Register'
                 >
                   Register
                 </Button>
@@ -218,6 +221,7 @@ const AuthenticationForm = ({
                   type='button'
                   buttonAs='text'
                   onClick={onChangeFormTypeButtonClick}
+                  aria-label='Login'
                 >
                   Login
                 </Button>

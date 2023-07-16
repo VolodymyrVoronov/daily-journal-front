@@ -1,0 +1,32 @@
+.root {
+  font-family: var(--comfortaa);
+  color: var(--black-light);
+}
+
+/* .calendar {
+  font-size: 9px !important;
+}
+
+@media only screen and (min-width: 576px) {
+  .calendar {
+    font-size: 9px !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .calendar {
+    font-size: 9px !important;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .calendar {
+    font-size: 9px !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .calendar {
+    font-size: 9px !important;
+  }
+} */
