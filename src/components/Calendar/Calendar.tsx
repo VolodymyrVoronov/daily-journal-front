@@ -1,10 +1,11 @@
-import cn from 'classnames';
-import { ComponentProps } from 'react';
 import {
   Calendar as C,
   DayValue,
 } from '@hassanmojab/react-modern-calendar-datepicker';
+import cn from 'classnames';
+import { ComponentProps, useEffect } from 'react';
 
+import getCurrentDate from '../../helpers/getCurrentDate';
 import { useJournalStore } from '../../store/journalStore';
 
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
@@ -112,19 +113,21 @@ const myCustomLocale = {
 };
 
 const minimumDate = {
-  year: new Date().getFullYear(),
-  month: new Date().getMonth() - 1,
-  day: new Date().getDate(),
+  year: getCurrentDate().year,
+  month: getCurrentDate().month - 1,
+  day: getCurrentDate().day,
 };
 
 const maximumDate = {
-  year: new Date().getFullYear(),
-  month: new Date().getMonth() + 3,
-  day: new Date().getDate(),
+  year: getCurrentDate().year,
+  month: getCurrentDate().month + 3,
+  day: getCurrentDate().day,
 };
 
 const Calendar = ({ className, ...props }: ICalendarProps): JSX.Element => {
   const { year, month, day, setDate } = useJournalStore();
+
+  console.log(year, month, day);
 
   const onCalendarChange = (value: DayValue) => {
     setDate(value);
