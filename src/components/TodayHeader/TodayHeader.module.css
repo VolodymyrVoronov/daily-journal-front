@@ -1,0 +1,115 @@
+.root {
+  display: grid;
+  grid-template-areas:
+    'd wd wd'
+    'd m y';
+  grid-template-columns: min-content min-content;
+  align-items: flex-start;
+
+  column-gap: 10px;
+
+  width: 100%;
+
+  padding-bottom: 0px;
+
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.root span {
+  font-weight: bold;
+
+  font-size: 18px;
+  line-height: 18px;
+}
+
+span.day {
+  display: flex;
+  align-items: center;
+
+  grid-area: d;
+
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.week-day {
+  display: flex;
+  align-items: center;
+
+  grid-area: wd;
+}
+
+.month {
+  display: flex;
+  align-items: center;
+
+  grid-area: m;
+}
+
+.year {
+  display: flex;
+  align-items: center;
+
+  grid-area: y;
+}
+
+@media only screen and (min-width: 576px) {
+  .root {
+    padding-bottom: 5px;
+  }
+
+  .root span {
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  span.day {
+    font-size: 44px;
+    line-height: 44px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .root {
+    padding-bottom: 10px;
+  }
+
+  .root span {
+    font-size: 22px;
+    line-height: 22px;
+  }
+
+  span.day {
+    font-size: 54px;
+    line-height: 54px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .root {
+    padding-bottom: 15px;
+  }
+
+  .root span {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  span.day {
+    font-size: 64px;
+    line-height: 64px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .root {
+    padding-bottom: 20px;
+  }
+
+  .root span {
+    font-size: 26px;
+    line-height: 26px;
+  }
+
+  span.day {
+    font-size: 76px;
+    line-height: 76px;
+  }
+}
