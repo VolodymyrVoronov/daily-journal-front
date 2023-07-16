@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { ComponentProps } from 'react';
 
 import { useJournalStore } from '../../store/journalStore';
@@ -14,13 +14,13 @@ const variants = {
   initial: { opacity: 0, filter: 'blur(10px)' },
   exit: { opacity: 0, filter: 'blur(10px)', transition: { duration: 0.5 } },
   animate: { opacity: 1, filter: 'blur(0px)', transition: { duration: 1 } },
-};
+} as Variants;
 
 const animations = {
   initial: 'initial',
   exit: 'exit',
   animate: 'animate',
-};
+} as const;
 
 const TodayHeader = ({
   className,
