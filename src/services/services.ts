@@ -29,3 +29,19 @@ export const logIn = ({
 export const getProfile = () => {
   return client.get('/users/profile');
 };
+
+export const getAllJournals = (year: number, month: number, day: number) => {
+  return client.get('/journals/all', {
+    id: 'all-journals',
+    params: {
+      year,
+      month,
+      day,
+    },
+    cache: {
+      update: {
+        'all-journals': 'delete',
+      },
+    },
+  });
+};

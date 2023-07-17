@@ -1,14 +1,22 @@
 import { AxiosError } from 'axios';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { BiLogOut, BiBookmark, BiStar, BiSolidStar } from 'react-icons/bi';
+import {
+  BiLogOut,
+  BiBookmark,
+  BiSolidBookmark,
+  BiStar,
+  BiSolidStar,
+} from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
-import { getProfile } from '../../services/services';
+import { getAllJournals, getProfile } from '../../services/services';
 import { useAuthStore } from '../../store/authStore';
 import { useUserStore } from '../../store/userStore';
 import { RouterPath } from '../../types';
 import { useJournalStore } from '../../store/journalStore';
+import getCurrentDate from '../../helpers/getCurrentDate';
+import { COLORS } from '../../constants';
 
 import Button from '../../components/Button/Button';
 import Calendar from '../../components/Calendar/Calendar';
@@ -21,9 +29,9 @@ import styles from './Journal.module.css';
 const Journal = (): JSX.Element => {
   const navigate = useNavigate();
 
-  const { isLoggedIn, accessToken, refreshToken, logout } = useAuthStore();
+  const { isLoggedIn, logout, accessToken, refreshToken } = useAuthStore();
   const { saveUserInfo } = useUserStore();
-  const { setToday } = useJournalStore();
+  const { setToday, year, month, day } = useJournalStore();
 
   const [resError, setResError] = useState('');
 
@@ -55,6 +63,23 @@ const Journal = (): JSX.Element => {
     }
   }, [accessToken, refreshToken]);
 
+  useEffect(() => {
+    getAllJournals(year, month, day)
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        if (error instanceof AxiosError && error.response) {
+          setResError(error.response.data.message);
+        }
+      });
+  }, [year, month, day]);
+
+  const isTodaySelected =
+    year === getCurrentDate().year &&
+    month === getCurrentDate().month + 1 &&
+    day === getCurrentDate().day;
+
   return (
     <>
       <motion.div
@@ -77,7 +102,34 @@ const Journal = (): JSX.Element => {
               buttonAs='text'
               aria-label='Today'
             >
-              <BiBookmark className={styles.icon} /> Today
+              <AnimatePresence mode='wait'>
+                <motion.div
+                  key={String(isTodaySelected)}
+                  initial={{ opacity: 0 }}
+                  exit={{
+                    opacity: 0,
+                    transition: {
+                      duration: 0.25,
+                    },
+                  }}
+                  animate={{
+                    opacity: 1,
+                    transition: {
+                      duration: 0.25,
+                    },
+                  }}
+                >
+                  {isTodaySelected ? (
+                    <BiSolidBookmark
+                      className={styles.icon}
+                      color={COLORS.BLUE}
+                    />
+                  ) : (
+                    <BiBookmark className={styles.icon} />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+              Today
             </Button>
 
             <Button
@@ -100,6 +152,7 @@ const Journal = (): JSX.Element => {
             <BiLogOut />
           </Button>
         </section>
+
         <section className={styles.right}>
           <TodayHeader />
         </section>
