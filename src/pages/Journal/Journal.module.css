@@ -55,6 +55,8 @@
 }
 
 .right {
+  overflow: hidden;
+
   display: flex;
   grid-area: right;
   flex-direction: column;

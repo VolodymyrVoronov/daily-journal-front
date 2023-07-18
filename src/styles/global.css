@@ -25,7 +25,8 @@ h6,
 p,
 span,
 label,
-input {
+input,
+textarea {
   font-family: var(--comfortaa);
   color: var(--black-light);
 }

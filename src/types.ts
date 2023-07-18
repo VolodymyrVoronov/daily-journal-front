@@ -24,3 +24,37 @@ export enum Token {
   AccessToken = 'accessToken',
   RefreshToken = 'refreshToken',
 }
+
+export interface IAuthentication {
+  data: {
+    accessToken: string;
+    refreshToken: string;
+  };
+}
+
+export interface IUser {
+  data: {
+    id: string;
+    login: string;
+    password: null;
+    createAt: Date;
+  };
+}
+
+export interface IJournal {
+  id: string;
+  title: string;
+  text: string;
+  favorite: boolean;
+  year: number;
+  month: number;
+  day: number;
+  createdAt: Date;
+  updatedAt: Date;
+  user?: any;
+  userId: string;
+}
+
+export interface IRes {
+  data: IJournal[];
+}

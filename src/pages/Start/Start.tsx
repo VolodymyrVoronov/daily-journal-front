@@ -8,7 +8,7 @@ import { useAuthStore } from '../../store/authStore';
 import { Form, RouterPath, type FormType, type IFormData } from '../../types';
 
 import AuthenticationForm from '../../components/AuthenticationForm/AuthenticationForm';
-import Error from '../../components/Error/Error';
+import Notification from '../../components/Notification/Notification';
 import Logo from '../../components/Logo/Logo';
 
 import styles from './Start.module.css';
@@ -83,7 +83,7 @@ const Start = (): JSX.Element => {
         </motion.section>
       </motion.div>
 
-      {resError && <Error errorMessage={resError} />}
+      {resError && <Notification message={resError} type='error' />}
     </>
   );
 };

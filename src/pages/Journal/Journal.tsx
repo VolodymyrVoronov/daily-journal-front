@@ -2,27 +2,28 @@ import { AxiosError } from 'axios';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import {
-  BiLogOut,
   BiBookmark,
+  BiLogOut,
   BiSolidBookmark,
-  BiStar,
   BiSolidStar,
+  BiStar,
 } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 
+import { COLORS } from '../../constants';
+import getCurrentDate from '../../helpers/getCurrentDate';
 import { getAllJournals, getProfile } from '../../services/services';
 import { useAuthStore } from '../../store/authStore';
+import { useJournalStore } from '../../store/journalStore';
 import { useUserStore } from '../../store/userStore';
 import { RouterPath } from '../../types';
-import { useJournalStore } from '../../store/journalStore';
-import getCurrentDate from '../../helpers/getCurrentDate';
-import { COLORS } from '../../constants';
 
 import Button from '../../components/Button/Button';
 import Calendar from '../../components/Calendar/Calendar';
-import Error from '../../components/Error/Error';
-import UserInfo from '../../components/UserInfo/UserInfo';
+import JournalItems from '../../components/JournalItems/JournalItems';
+import Notification from '../../components/Notification/Notification';
 import TodayHeader from '../../components/TodayHeader/TodayHeader';
+import UserInfo from '../../components/UserInfo/UserInfo';
 
 import styles from './Journal.module.css';
 
@@ -31,9 +32,26 @@ const Journal = (): JSX.Element => {
 
   const { isLoggedIn, logout, accessToken, refreshToken } = useAuthStore();
   const { saveUserInfo } = useUserStore();
-  const { setToday, year, month, day } = useJournalStore();
+  const {
+    setToday,
+    setJournals,
+    setShowFavorite,
+    year,
+    month,
+    day,
+    journals,
+    refetchEventHappened,
+    showFavorite,
+  } = useJournalStore();
 
   const [resError, setResError] = useState('');
+
+  const isTodaySelected =
+    year === getCurrentDate().year &&
+    month === getCurrentDate().month + 1 &&
+    day === getCurrentDate().day;
+
+  const anyFavorite = journals.some((journal) => journal.favorite);
 
   const onLogoutButtonClick = (): void => {
     logout();
@@ -41,6 +59,14 @@ const Journal = (): JSX.Element => {
 
   const onTodayButtonClick = (): void => {
     setToday();
+  };
+
+  const onFavoriteButtonClick = () => {
+    if (showFavorite) {
+      setShowFavorite(false);
+    } else {
+      setShowFavorite(true);
+    }
   };
 
   useEffect(() => {
@@ -66,19 +92,21 @@ const Journal = (): JSX.Element => {
   useEffect(() => {
     getAllJournals(year, month, day)
       .then(({ data }) => {
-        console.log(data);
+        setJournals([]);
+        setJournals(data);
       })
       .catch((error) => {
         if (error instanceof AxiosError && error.response) {
           setResError(error.response.data.message);
         }
       });
-  }, [year, month, day]);
+  }, [year, month, day, refetchEventHappened]);
 
-  const isTodaySelected =
-    year === getCurrentDate().year &&
-    month === getCurrentDate().month + 1 &&
-    day === getCurrentDate().day;
+  useEffect(() => {
+    if (anyFavorite === false) {
+      setShowFavorite(false);
+    }
+  }, [anyFavorite]);
 
   return (
     <>
@@ -134,12 +162,36 @@ const Journal = (): JSX.Element => {
 
             <Button
               className={styles.button}
-              onClick={() => {}}
+              onClick={onFavoriteButtonClick}
               type='button'
               buttonAs='text'
               aria-label='Favorite'
             >
-              <BiStar className={styles.icon} /> Favorite
+              <AnimatePresence mode='wait'>
+                <motion.div
+                  key={String(anyFavorite)}
+                  initial={{ opacity: 0 }}
+                  exit={{
+                    opacity: 0,
+                    transition: {
+                      duration: 0.25,
+                    },
+                  }}
+                  animate={{
+                    opacity: 1,
+                    transition: {
+                      duration: 0.25,
+                    },
+                  }}
+                >
+                  {anyFavorite ? (
+                    <BiSolidStar className={styles.icon} color={COLORS.GOLD} />
+                  ) : (
+                    <BiStar className={styles.icon} />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+              Favorite
             </Button>
           </div>
 
@@ -155,10 +207,12 @@ const Journal = (): JSX.Element => {
 
         <section className={styles.right}>
           <TodayHeader />
+
+          <JournalItems />
         </section>
       </motion.div>
 
-      {resError && <Error errorMessage={resError} />}
+      {resError && <Notification message={resError} type='error' />}
     </>
   );
 };

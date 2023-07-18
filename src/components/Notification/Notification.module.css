@@ -12,7 +12,16 @@
   font-family: var(--comfortaa);
   font-size: 20px;
   line-height: 26px;
+}
+
+.root-error {
   color: tomato;
 
   background-color: var(--black-light);
+}
+
+.root-info {
+  color: var(--white);
+
+  background-color: var(--blue);
 }
