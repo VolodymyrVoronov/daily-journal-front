@@ -54,7 +54,7 @@ const AuthenticationForm = ({
     }, 1000);
   };
 
-  useEventListener('keydown', (e) => {
+  useEventListener('keydown', (e): void => {
     if (e.key === Key.Escape) {
       reset();
     }

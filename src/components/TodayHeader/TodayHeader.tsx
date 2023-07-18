@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { ComponentProps } from 'react';
 
-import { useJournalStore } from '../../store/journalStore';
+import { useJournalStore } from '../../store/journal';
 
 import styles from './TodayHeader.module.css';
 

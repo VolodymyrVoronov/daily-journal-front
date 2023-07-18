@@ -1,6 +1,15 @@
 import type { AxiosRequestConfig } from 'axios';
 
-import { IAuthentication, IJournal, IRes, IUser } from './../types';
+import {
+  IAddToFavorite,
+  IAuthentication,
+  ICreate,
+  IDelete,
+  IJournal,
+  IJournals,
+  IUpdate,
+  IUser,
+} from './../types';
 import client from './axios-client';
 
 export const register = ({
@@ -35,7 +44,7 @@ export const getAllJournals = (
   year: number,
   month: number,
   day: number,
-): Promise<IRes> => {
+): Promise<IJournals> => {
   return client.get('/journals/all', {
     id: 'all-journals',
     params: {
@@ -65,7 +74,7 @@ export const createJournal = ({
   year: number;
   month: number;
   day: number;
-}) => {
+}): Promise<ICreate> => {
   return client.post(
     '/journals/create',
     {
@@ -86,7 +95,7 @@ export const createJournal = ({
   );
 };
 
-export const deleteJournal = (journalId: string) => {
+export const deleteJournal = (journalId: string): Promise<IDelete> => {
   return client.delete(`/journals/delete/${journalId}`, {
     cache: {
       update: {
@@ -96,7 +105,7 @@ export const deleteJournal = (journalId: string) => {
   });
 };
 
-export const addToFavorite = (journalId: string) => {
+export const addToFavorite = (journalId: string): Promise<IAddToFavorite> => {
   return client.patch(
     `/journals/favorite/${journalId}`,
     { journalId },
@@ -110,7 +119,7 @@ export const addToFavorite = (journalId: string) => {
   );
 };
 
-export const updateJournal = (data: IJournal) => {
+export const updateJournal = (data: IJournal): Promise<IUpdate> => {
   return client.patch(`/journals/update/${data.id}`, data, {
     cache: {
       update: {

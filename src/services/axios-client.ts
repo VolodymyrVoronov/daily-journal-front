@@ -1,5 +1,5 @@
 import { AXIOS_TIMEOUT, BASE_URL, REFRESH_TOKEN_URL } from '../constants';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from '../store/auth';
 import createAxiosClient from './create-axios-client';
 
 const getCurrentAccessToken = (): string | null => {

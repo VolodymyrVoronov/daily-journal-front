@@ -55,6 +55,18 @@ export interface IJournal {
   userId: string;
 }
 
-export interface IRes {
+export interface IJournals {
   data: IJournal[];
 }
+
+export interface IRes {
+  data: {
+    status: number;
+    message: string;
+  };
+}
+
+export interface ICreate extends IRes {}
+export interface IDelete extends IRes {}
+export interface IAddToFavorite extends IRes {}
+export interface IUpdate extends IRes {}

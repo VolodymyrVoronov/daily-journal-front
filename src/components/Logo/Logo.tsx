@@ -1,5 +1,5 @@
-import { ComponentProps, ReactNode } from 'react';
 import cn from 'classnames';
+import { ComponentProps, ReactNode } from 'react';
 
 import styles from './Logo.module.css';
 

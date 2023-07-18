@@ -8,7 +8,7 @@ import {
   deleteJournal,
   updateJournal,
 } from '../../services/services';
-import { useJournalStore } from '../../store/journalStore';
+import { useJournalStore } from '../../store/journal';
 import { IJournal } from '../../types';
 
 import Notification from '../../components/Notification/Notification';
@@ -52,7 +52,7 @@ const JournalItems = ({ className }: IJournalItemsProps): JSX.Element => {
       });
   };
 
-  const onUpdateClick = (data: IJournal) => {
+  const onUpdateClick = (data: IJournal): void => {
     setResError('');
     setResInfo('');
 

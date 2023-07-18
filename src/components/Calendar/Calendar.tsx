@@ -6,7 +6,7 @@ import cn from 'classnames';
 import { ComponentProps } from 'react';
 
 import getCurrentDate from '../../helpers/getCurrentDate';
-import { useJournalStore } from '../../store/journalStore';
+import { useJournalStore } from '../../store/journal';
 
 import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
 import styles from './Calendar.module.css';
@@ -127,7 +127,7 @@ const maximumDate = {
 const Calendar = ({ className, ...props }: ICalendarProps): JSX.Element => {
   const { year, month, day, setDate } = useJournalStore();
 
-  const onCalendarChange = (value: DayValue) => {
+  const onCalendarChange = (value: DayValue): void => {
     setDate(value);
   };
 

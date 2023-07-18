@@ -13,9 +13,9 @@ import { useNavigate } from 'react-router-dom';
 import { COLORS } from '../../constants';
 import getCurrentDate from '../../helpers/getCurrentDate';
 import { getAllJournals, getProfile } from '../../services/services';
-import { useAuthStore } from '../../store/authStore';
-import { useJournalStore } from '../../store/journalStore';
-import { useUserStore } from '../../store/userStore';
+import { useAuthStore } from '../../store/auth';
+import { useJournalStore } from '../../store/journal';
+import { useUserStore } from '../../store/user.ts';
 import { RouterPath } from '../../types';
 
 import Button from '../../components/Button/Button';
@@ -61,7 +61,7 @@ const Journal = (): JSX.Element => {
     setToday();
   };
 
-  const onFavoriteButtonClick = () => {
+  const onFavoriteButtonClick = (): void => {
     if (showFavorite) {
       setShowFavorite(false);
     } else {

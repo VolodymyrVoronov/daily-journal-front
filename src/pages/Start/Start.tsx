@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { logIn, register } from '../../services/services';
-import { useAuthStore } from '../../store/authStore';
+import { useAuthStore } from '../../store/auth';
 import { Form, RouterPath, type FormType, type IFormData } from '../../types';
 
 import AuthenticationForm from '../../components/AuthenticationForm/AuthenticationForm';
-import Notification from '../../components/Notification/Notification';
 import Logo from '../../components/Logo/Logo';
+import Notification from '../../components/Notification/Notification';
 
 import styles from './Start.module.css';
 

@@ -1,7 +1,7 @@
-import { ComponentProps } from 'react';
 import cn from 'classnames';
+import { ComponentProps } from 'react';
 
-import { useUserStore } from '../../store/userStore';
+import { useUserStore } from '../../store/user.ts';
 
 import styles from './UserInfo.module.css';
 
