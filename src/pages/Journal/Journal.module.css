@@ -55,6 +55,22 @@
   border-top-right-radius: 25px;
 }
 
+.left::-webkit-scrollbar {
+  width: 10px;
+}
+
+.left::-webkit-scrollbar-track {
+  background-color: var(--gray-lighter);
+}
+
+.left::-webkit-scrollbar-thumb {
+  background-color: var(--gray-light);
+}
+
+.left::-webkit-scrollbar-thumb:hover {
+  background-color: gray;
+}
+
 .right {
   overflow: hidden;
 
